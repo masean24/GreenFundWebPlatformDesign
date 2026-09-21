@@ -1,0 +1,10 @@
+{
+  "description": "Connect supporters and investors to fund renewable energy projects in Indonesia, enabling measurable environmental impact and community growth.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,800;1,9..144,300;1,9..144,700;1,9..144,800&display=swap');
+@import 'leaflet/dist/leaflet.css';
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Fraunces', serif;
+
+  --color-forest: #14432B;
+  --color-forest-light: #1a5436;
+  --color-green: #4CAF50;
+  --color-green-light: #66BB6A;
+  --color-green-50: #E7F5EA;
+  --color-teal: #1F8A8C;
+  --color-teal-light: #26A9AB;
+  --color-slate: #1E2A26;
+  --color-surface: #FAFAF7;
+  --color-muted: #F4F4F0;
+  --color-border: #E5E8E4;
+  --color-text: #1E2A26;
+  --color-text-muted: #6B7280;
+  --color-text-subtle: #9CA3AF;
+}
+
+html, body, #root {
+  height: 100%;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background-color: #FAFAF7;
+  color: #1E2A26;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Honor reduced-motion: kill decorative loops and long transitions,
+   keep interactions functional. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9CA3AF;
+}
+
+.shadow-card {
+  box-shadow:
+    0px 0px 0px 1px oklch(0 0 0 / 0.05),
+    0px 1px 2px -1px oklch(0 0 0 / 0.06),
+    0px 2px 8px 0px oklch(0 0 0 / 0.04);
+}
+
+.shadow-card-hover {
+  box-shadow:
+    0px 0px 0px 1px oklch(0 0 0 / 0.08),
+    0px 2px 6px -1px oklch(0 0 0 / 0.08),
+    0px 4px 16px 0px oklch(0 0 0 / 0.06);
+}
+
+.shadow-elevated {
+  box-shadow:
+    0px 0px 0px 1px oklch(0 0 0 / 0.06),
+    0px 4px 12px -2px oklch(0 0 0 / 0.08),
+    0px 8px 24px 0px oklch(0 0 0 / 0.06);
+}
+
+/* Leaflet custom marker styles */
+.gf-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gf-marker-dot {
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 1;
+}
+.gf-marker-ring {
+  position: absolute;
+  border-radius: 50%;
+  animation: gf-pulse 2s ease-out infinite;
+}
+@keyframes gf-pulse {
+  0%   { transform: scale(1);   opacity: 0.55; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+
+/* Override leaflet tooltip arrow to match our style */
+.gf-tooltip {
+  background: white !important;
+  border: 1px solid #E5E8E4 !important;
+  border-radius: 14px !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12) !important;
+  padding: 10px 12px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 12px !important;
+  color: #1E2A26 !important;
+  white-space: normal !important;
+  min-width: 180px !important;
+  pointer-events: none !important;
+}
+.gf-tooltip::before { display: none !important; }
+
+/* Keep leaflet inside its own stacking context */
+.leaflet-container { font-family: 'Inter', sans-serif; }
+.leaflet-top, .leaflet-bottom { z-index: 400 !important; }
